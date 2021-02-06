@@ -1,0 +1,12 @@
+.refused-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+
+  textarea {
+    width: 200px;
+    height: 70px;
+    resize: none;
+  }
+
+}

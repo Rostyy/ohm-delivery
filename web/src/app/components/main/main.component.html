@@ -1,0 +1,33 @@
+<div>
+  <mat-toolbar color="primary">
+    <span>Ohm Delivery</span>
+    <span>Get shocked by the power</span>
+  </mat-toolbar>
+</div>
+
+<div class="content">
+  <form [formGroup]="form" (ngSubmit)="getOhmById()" class="tracking-form">
+    <mat-form-field appearance="legacy">
+      <mat-label>Enter your tracking id</mat-label>
+      <input matInput placeholder="tracking id" formControlName="trackingId">
+      <mat-error *ngIf="trackingId.invalid">Invalid id</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-button color="primary" [disabled]="form.invalid">Submit</button>
+  </form>
+
+  <div class="error" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
+
+  <div class="customer-info">
+    <mat-chip-list>
+      <div *ngIf="data?.status" class="status">
+        STATUS:
+        <mat-chip color="primary" selected>{{data.status}}</mat-chip>
+        <app-refused-form *ngIf="data.status === 'REFUSED'"></app-refused-form>
+      </div>
+    </mat-chip-list>
+
+    <app-history *ngIf="data?.history" [history]="data.history"></app-history>
+  </div>
+</div>

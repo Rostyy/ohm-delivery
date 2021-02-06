@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="sendReason()" class="refused-form">
+  <mat-label>Enter your failure reason:</mat-label>
+  <textarea placeholder="please provide failure reason" formControlName="reason"></textarea>
+  <button type="submit" mat-button color="primary" [disabled]="form.invalid">Send</button>
+  <div class="error" *ngIf="sendErrorMsg">
+    {{sendErrorMsg}}
+  </div>
+  <div *ngIf="successMsg">
+    {{successMsg}}
+  </div>
+</form>
+
+
+
